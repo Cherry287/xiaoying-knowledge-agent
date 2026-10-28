@@ -1,0 +1,36 @@
+test_clear_answer (test_agent.AcceptanceTests.test_clear_answer) ... ok
+test_conflict_not_resolved_by_newer_date (test_agent.AcceptanceTests.test_conflict_not_resolved_by_newer_date) ... ok
+test_content_mutation_changes_actual_answer (test_agent.AcceptanceTests.test_content_mutation_changes_actual_answer) ... ok
+test_context_is_retrieved_not_trusted (test_agent.AcceptanceTests.test_context_is_retrieved_not_trusted) ... ok
+test_missing_information (test_agent.AcceptanceTests.test_missing_information) ... ok
+test_mutation_removes_conflict_and_changes_action_path (test_agent.AcceptanceTests.test_mutation_removes_conflict_and_changes_action_path) ... ok
+test_outside_questions_not_answered_from_prior_knowledge (test_agent.AcceptanceTests.test_outside_questions_not_answered_from_prior_knowledge) ... ok
+test_paraphrase (test_agent.AcceptanceTests.test_paraphrase) ... ok
+test_permanent_failure_keeps_successful_reads (test_agent.AcceptanceTests.test_permanent_failure_keeps_successful_reads) ... ok
+test_step_budget (test_agent.AcceptanceTests.test_step_budget) ... ok
+test_transient_failure_is_visible_then_recovered (test_agent.AcceptanceTests.test_transient_failure_is_visible_then_recovered) ... ok
+test_cli_outputs_trace_and_exit_codes (test_agent.CLITests.test_cli_outputs_trace_and_exit_codes) ... ok
+test_cannot_cherry_pick_conflict (test_agent.GuardrailTests.test_cannot_cherry_pick_conflict) ... ok
+test_citation_without_reading_rejected (test_agent.GuardrailTests.test_citation_without_reading_rejected) ... ok
+test_conflict_requires_both_citations (test_agent.GuardrailTests.test_conflict_requires_both_citations) ... ok
+test_empty_corpus_is_not_default_corpus (test_agent.GuardrailTests.test_empty_corpus_is_not_default_corpus) ... ok
+test_fabricated_quote_rejected (test_agent.GuardrailTests.test_fabricated_quote_rejected) ... ok
+test_invalid_action_rejected_and_recovery_possible (test_agent.GuardrailTests.test_invalid_action_rejected_and_recovery_possible) ... ok
+test_invalid_dataset_and_failure_injection_rejected (test_agent.GuardrailTests.test_invalid_dataset_and_failure_injection_rejected) ... ok
+test_invalid_input_rejected (test_agent.GuardrailTests.test_invalid_input_rejected) ... ok
+test_malformed_arguments_are_bounded (test_agent.GuardrailTests.test_malformed_arguments_are_bounded) ... ok
+test_no_direct_read_bypass (test_agent.GuardrailTests.test_no_direct_read_bypass) ... ok
+test_partial_quote_cannot_strip_negation (test_agent.GuardrailTests.test_partial_quote_cannot_strip_negation) ... ok
+test_search_expands_sibling_documents (test_agent.GuardrailTests.test_search_expands_sibling_documents) ... ok
+test_unread_competing_document_blocks_answer (test_agent.GuardrailTests.test_unread_competing_document_blocks_answer) ... ok
+test_http_or_credentialed_endpoint_rejected (test_agent.ProviderTests.test_http_or_credentialed_endpoint_rejected) ... ok
+test_incomplete_response_and_parallel_calls_rejected (test_agent.ProviderTests.test_incomplete_response_and_parallel_calls_rejected) ... ok
+test_missing_api_config_never_falls_back_to_mock (test_agent.ProviderTests.test_missing_api_config_never_falls_back_to_mock) ... ok
+test_responses_contract_includes_observation_and_continuity (test_agent.ProviderTests.test_responses_contract_includes_observation_and_continuity) ... ok
+test_secret_not_in_provider_failure_trace (test_agent.ProviderTests.test_secret_not_in_provider_failure_trace) ... ok
+test_stdio_transports_action_and_observation (test_agent.ProviderTests.test_stdio_transports_action_and_observation) ... ok
+
+----------------------------------------------------------------------
+Ran 31 tests in 0.207s
+
+OK

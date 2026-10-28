@@ -1,0 +1,186 @@
+{
+  "schema_version": 1,
+  "provider": "offline_mock",
+  "is_mock": true,
+  "input": {
+    "question": "影创的自动字幕能手动修改吗？"
+  },
+  "started_at": "2026-10-28T04:46:06.869158+00:00",
+  "finished_at": "2026-10-28T04:46:06.869158+00:00",
+  "data_sha256": "38c4bfa1a2399c9ffb2420285230a40cb1f29d4fa9872fdfbf4363f107dba96e",
+  "max_steps": 12,
+  "steps": 4,
+  "outcome": {
+    "status": "answered",
+    "answer": "根据已核验原文：\n[P01 · 2026-08-01] 影创标准版支持自动生成字幕，生成后可手动编辑字幕文本。\n[P02 · 2026-08-01] 影创标准版支持将视频导出为 MP4 格式。",
+    "citations": [
+      {
+        "doc_id": "P01",
+        "version_date": "2026-08-01",
+        "title": "影创产品字幕说明",
+        "quote": "影创标准版支持自动生成字幕，生成后可手动编辑字幕文本。",
+        "policy_key": "product.subtitle"
+      },
+      {
+        "doc_id": "P02",
+        "version_date": "2026-08-01",
+        "title": "影创导出说明",
+        "quote": "影创标准版支持将视频导出为 MP4 格式。",
+        "policy_key": "product.export"
+      }
+    ],
+    "gaps": []
+  },
+  "trace": [
+    {
+      "step": 1,
+      "action": "search_documents",
+      "arguments": {
+        "query": "影创的自动字幕能手动修改吗？",
+        "reason": "根据问题及必要的上文检索资料"
+      },
+      "reason": "根据问题及必要的上文检索资料",
+      "result": {
+        "ok": true,
+        "query": "影创的自动字幕能手动修改吗？",
+        "normalized_query": "影创的自动字幕能手动修改吗？",
+        "results": [
+          {
+            "id": "P01",
+            "title": "影创产品字幕说明",
+            "version_date": "2026-08-01",
+            "policy_key": "product.subtitle",
+            "scope": "影创标准版",
+            "priority": null
+          },
+          {
+            "id": "P02",
+            "title": "影创导出说明",
+            "version_date": "2026-08-01",
+            "policy_key": "product.export",
+            "scope": "影创标准版",
+            "priority": null
+          }
+        ],
+        "coverage": "all_documents_in_matched_policy_keys",
+        "count": 2
+      },
+      "summary": "检索命中 2 份资料",
+      "at": "2026-10-28T04:46:06.869158+00:00",
+      "model_metadata": {},
+      "next_action": "read_document"
+    },
+    {
+      "step": 2,
+      "action": "read_document",
+      "arguments": {
+        "doc_id": "P01",
+        "reason": "检索只给出元数据，需要读取候选原文"
+      },
+      "reason": "检索只给出元数据，需要读取候选原文",
+      "result": {
+        "ok": true,
+        "document": {
+          "id": "P01",
+          "title": "影创产品字幕说明",
+          "version_date": "2026-08-01",
+          "policy_key": "product.subtitle",
+          "scope": "影创标准版",
+          "priority": null,
+          "keywords": [
+            "产品",
+            "影创",
+            "字幕",
+            "自动字幕",
+            "语音转文字"
+          ],
+          "text": "影创标准版支持自动生成字幕，生成后可手动编辑字幕文本。"
+        }
+      },
+      "summary": "读取 P01 原文成功",
+      "at": "2026-10-28T04:46:06.869158+00:00",
+      "model_metadata": {},
+      "next_action": "read_document"
+    },
+    {
+      "step": 3,
+      "action": "read_document",
+      "arguments": {
+        "doc_id": "P02",
+        "reason": "检索只给出元数据，需要读取候选原文"
+      },
+      "reason": "检索只给出元数据，需要读取候选原文",
+      "result": {
+        "ok": true,
+        "document": {
+          "id": "P02",
+          "title": "影创导出说明",
+          "version_date": "2026-08-01",
+          "policy_key": "product.export",
+          "scope": "影创标准版",
+          "priority": null,
+          "keywords": [
+            "影创",
+            "产品",
+            "导出",
+            "格式",
+            "mp4"
+          ],
+          "text": "影创标准版支持将视频导出为 MP4 格式。"
+        }
+      },
+      "summary": "读取 P02 原文成功",
+      "at": "2026-10-28T04:46:06.869158+00:00",
+      "model_metadata": {},
+      "next_action": "finish"
+    },
+    {
+      "step": 4,
+      "action": "finish",
+      "arguments": {
+        "status": "answered",
+        "citations": [
+          {
+            "doc_id": "P01",
+            "quote": "影创标准版支持自动生成字幕，生成后可手动编辑字幕文本。"
+          },
+          {
+            "doc_id": "P02",
+            "quote": "影创标准版支持将视频导出为 MP4 格式。"
+          }
+        ],
+        "gaps": [],
+        "reason": "已读取候选原文，未发现同主题冲突"
+      },
+      "reason": "已读取候选原文，未发现同主题冲突",
+      "result": {
+        "ok": true,
+        "outcome": {
+          "status": "answered",
+          "answer": "根据已核验原文：\n[P01 · 2026-08-01] 影创标准版支持自动生成字幕，生成后可手动编辑字幕文本。\n[P02 · 2026-08-01] 影创标准版支持将视频导出为 MP4 格式。",
+          "citations": [
+            {
+              "doc_id": "P01",
+              "version_date": "2026-08-01",
+              "title": "影创产品字幕说明",
+              "quote": "影创标准版支持自动生成字幕，生成后可手动编辑字幕文本。",
+              "policy_key": "product.subtitle"
+            },
+            {
+              "doc_id": "P02",
+              "version_date": "2026-08-01",
+              "title": "影创导出说明",
+              "quote": "影创标准版支持将视频导出为 MP4 格式。",
+              "policy_key": "product.export"
+            }
+          ],
+          "gaps": []
+        }
+      },
+      "summary": "结束：answered",
+      "at": "2026-10-28T04:46:06.869158+00:00",
+      "model_metadata": {},
+      "next_action": "stop"
+    }
+  ]
+}

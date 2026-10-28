@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "provider": "offline_mock",
+  "is_mock": true,
+  "input": {
+    "question": ""
+  },
+  "started_at": "2026-10-28T04:46:06.880131+00:00",
+  "finished_at": "2026-10-28T04:46:06.880131+00:00",
+  "data_sha256": "38c4bfa1a2399c9ffb2420285230a40cb1f29d4fa9872fdfbf4363f107dba96e",
+  "max_steps": 12,
+  "steps": 1,
+  "outcome": {
+    "status": "needs_clarification",
+    "answer": "需要补充信息后继续。",
+    "citations": [],
+    "gaps": [
+      "请提供要查询的问题。"
+    ]
+  },
+  "trace": [
+    {
+      "step": 1,
+      "action": "finish",
+      "arguments": {
+        "status": "needs_clarification",
+        "citations": [],
+        "gaps": [
+          "请提供要查询的问题。"
+        ],
+        "reason": "缺少问题，需要用户补充"
+      },
+      "reason": "缺少问题，需要用户补充",
+      "result": {
+        "ok": true,
+        "outcome": {
+          "status": "needs_clarification",
+          "answer": "需要补充信息后继续。",
+          "citations": [],
+          "gaps": [
+            "请提供要查询的问题。"
+          ]
+        }
+      },
+      "summary": "结束：needs_clarification",
+      "at": "2026-10-28T04:46:06.880131+00:00",
+      "model_metadata": {},
+      "next_action": "stop"
+    }
+  ]
+}

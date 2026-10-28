@@ -1,0 +1,7 @@
+[
+  {"id":"D01","title":"员工报销指引","version_date":"2026-01-01","policy_key":"expense.deadline","scope":"未注明","priority":null,"keywords":["报销","报账","费用","期限","多久","几天"],"text":"报销申请须在费用发生后 30 天内提交。"},
+  {"id":"D02","title":"财务报销 FAQ","version_date":"2026-06-01","policy_key":"expense.deadline","scope":"未注明","priority":null,"keywords":["报销","报账","费用","期限","多久","几天"],"text":"报销申请须在费用发生后 15 天内提交。"},
+  {"id":"D03","title":"报销附件说明","version_date":"2026-02-01","policy_key":"expense.receipt","scope":"所有员工","priority":null,"keywords":["报销","发票","凭证","附件"],"text":"提交报销申请时须附发票和支付凭证。"},
+  {"id":"P01","title":"影创产品字幕说明","version_date":"2026-08-01","policy_key":"product.subtitle","scope":"影创标准版","priority":null,"keywords":["产品","影创","字幕","自动字幕","语音转文字"],"text":"影创标准版支持自动生成字幕，生成后可手动编辑字幕文本。"},
+  {"id":"P02","title":"影创导出说明","version_date":"2026-08-01","policy_key":"product.export","scope":"影创标准版","priority":null,"keywords":["影创","产品","导出","格式","mp4"],"text":"影创标准版支持将视频导出为 MP4 格式。"}
+]

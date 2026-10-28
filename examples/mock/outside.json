@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "provider": "offline_mock",
+  "is_mock": true,
+  "input": {
+    "question": "公司提供宠物医疗保险吗？"
+  },
+  "started_at": "2026-10-28T04:46:06.872634+00:00",
+  "finished_at": "2026-10-28T04:46:06.872634+00:00",
+  "data_sha256": "38c4bfa1a2399c9ffb2420285230a40cb1f29d4fa9872fdfbf4363f107dba96e",
+  "max_steps": 12,
+  "steps": 3,
+  "outcome": {
+    "status": "insufficient_evidence",
+    "answer": "现有资料不足以回答。",
+    "citations": [],
+    "gaps": [
+      "知识库无相关资料，请提供制度或产品文档。"
+    ]
+  },
+  "trace": [
+    {
+      "step": 1,
+      "action": "search_documents",
+      "arguments": {
+        "query": "公司提供宠物医疗保险吗？",
+        "reason": "根据问题及必要的上文检索资料"
+      },
+      "reason": "根据问题及必要的上文检索资料",
+      "result": {
+        "ok": true,
+        "query": "公司提供宠物医疗保险吗？",
+        "normalized_query": "公司提供宠物医疗保险吗？",
+        "results": [],
+        "coverage": "all_documents_in_matched_policy_keys",
+        "count": 0
+      },
+      "summary": "检索命中 0 份资料",
+      "at": "2026-10-28T04:46:06.872634+00:00",
+      "model_metadata": {},
+      "next_action": "search_documents"
+    },
+    {
+      "step": 2,
+      "action": "search_documents",
+      "arguments": {
+        "query": "公司提供宠物医疗保险吗？ 适用范围 规则",
+        "reason": "没有命中，补充适用范围关键词再查一次"
+      },
+      "reason": "没有命中，补充适用范围关键词再查一次",
+      "result": {
+        "ok": true,
+        "query": "公司提供宠物医疗保险吗？ 适用范围 规则",
+        "normalized_query": "公司提供宠物医疗保险吗？ 适用范围 规则",
+        "results": [],
+        "coverage": "all_documents_in_matched_policy_keys",
+        "count": 0
+      },
+      "summary": "检索命中 0 份资料",
+      "at": "2026-10-28T04:46:06.872634+00:00",
+      "model_metadata": {},
+      "next_action": "finish"
+    },
+    {
+      "step": 3,
+      "action": "finish",
+      "arguments": {
+        "status": "insufficient_evidence",
+        "citations": [],
+        "gaps": [
+          "知识库无相关资料，请提供制度或产品文档。"
+        ],
+        "reason": "补查仍无可用资料，不能凭常识作答"
+      },
+      "reason": "补查仍无可用资料，不能凭常识作答",
+      "result": {
+        "ok": true,
+        "outcome": {
+          "status": "insufficient_evidence",
+          "answer": "现有资料不足以回答。",
+          "citations": [],
+          "gaps": [
+            "知识库无相关资料，请提供制度或产品文档。"
+          ]
+        }
+      },
+      "summary": "结束：insufficient_evidence",
+      "at": "2026-10-28T04:46:06.872634+00:00",
+      "model_metadata": {},
+      "next_action": "stop"
+    }
+  ]
+}

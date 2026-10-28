@@ -1,0 +1,88 @@
+{
+  "generated_at": "2026-10-28T04:46:06.890667+00:00",
+  "python": "3.12.7",
+  "platform": "Windows-11-10.0.22631-SP0",
+  "provider": "mock",
+  "cases": [
+    {
+      "case": "clear_answer",
+      "expected": "answered",
+      "actual": "answered",
+      "passed": true,
+      "trace": "clear_answer.json"
+    },
+    {
+      "case": "conflict",
+      "expected": "conflict",
+      "actual": "conflict",
+      "passed": true,
+      "trace": "conflict.json"
+    },
+    {
+      "case": "outside",
+      "expected": "insufficient_evidence",
+      "actual": "insufficient_evidence",
+      "passed": true,
+      "trace": "outside.json"
+    },
+    {
+      "case": "paraphrase",
+      "expected": "answered",
+      "actual": "answered",
+      "passed": true,
+      "trace": "paraphrase.json"
+    },
+    {
+      "case": "context",
+      "expected": "answered",
+      "actual": "answered",
+      "passed": true,
+      "trace": "context.json"
+    },
+    {
+      "case": "failure_once",
+      "expected": "answered",
+      "actual": "answered",
+      "passed": true,
+      "trace": "failure_once.json"
+    },
+    {
+      "case": "failure_permanent",
+      "expected": "incomplete",
+      "actual": "incomplete",
+      "passed": true,
+      "trace": "failure_permanent.json"
+    },
+    {
+      "case": "missing_question",
+      "expected": "needs_clarification",
+      "actual": "needs_clarification",
+      "passed": true,
+      "trace": "missing_question.json"
+    },
+    {
+      "case": "step_limit",
+      "expected": "incomplete",
+      "actual": "incomplete",
+      "passed": true,
+      "trace": "step_limit.json"
+    },
+    {
+      "case": "conflict_resolved_by_document_change",
+      "expected": "answered",
+      "actual": "answered",
+      "passed": true,
+      "trace": "conflict_resolved_by_document_change.json"
+    },
+    {
+      "case": "fact_changed",
+      "expected": "answered",
+      "actual": "answered",
+      "passed": true,
+      "trace": "fact_changed.json"
+    }
+  ],
+  "passed": 11,
+  "total": 11,
+  "limitation": "Mock validates workflow only; API runs require separate credentials and review."
+}

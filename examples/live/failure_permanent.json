@@ -1,0 +1,175 @@
+{
+  "schema_version": 1,
+  "provider": "stdio_bridge:codex-assistant-interactive",
+  "is_mock": false,
+  "input": {
+    "question": "报销期限是多久？",
+    "failures": {
+      "read_document:D02": -1
+    }
+  },
+  "started_at": "2026-10-28T04:38:49.543569+00:00",
+  "finished_at": "2026-10-28T04:39:55.777877+00:00",
+  "data_sha256": "38c4bfa1a2399c9ffb2420285230a40cb1f29d4fa9872fdfbf4363f107dba96e",
+  "max_steps": 12,
+  "steps": 4,
+  "outcome": {
+    "status": "incomplete",
+    "answer": "任务未完成。\n[D01 · 2026-01-01] 报销申请须在费用发生后 30 天内提交。",
+    "citations": [
+      {
+        "doc_id": "D01",
+        "version_date": "2026-01-01",
+        "title": "员工报销指引",
+        "quote": "报销申请须在费用发生后 30 天内提交。",
+        "policy_key": "expense.deadline"
+      }
+    ],
+    "gaps": [
+      "D02读取持续失败，同主题资料未核验完；D01仅为已取得的部分证据，暂不能确定适用期限。"
+    ]
+  },
+  "trace": [
+    {
+      "step": 1,
+      "action": "search_documents",
+      "arguments": {
+        "query": "报销期限",
+        "reason": "检索报销期限的相关制度文档"
+      },
+      "reason": "检索报销期限的相关制度文档",
+      "result": {
+        "ok": true,
+        "query": "报销期限",
+        "normalized_query": "报销期限",
+        "results": [
+          {
+            "id": "D01",
+            "title": "员工报销指引",
+            "version_date": "2026-01-01",
+            "policy_key": "expense.deadline",
+            "scope": "未注明",
+            "priority": null
+          },
+          {
+            "id": "D02",
+            "title": "财务报销 FAQ",
+            "version_date": "2026-06-01",
+            "policy_key": "expense.deadline",
+            "scope": "未注明",
+            "priority": null
+          },
+          {
+            "id": "D03",
+            "title": "报销附件说明",
+            "version_date": "2026-02-01",
+            "policy_key": "expense.receipt",
+            "scope": "所有员工",
+            "priority": null
+          }
+        ],
+        "coverage": "all_documents_in_matched_policy_keys",
+        "count": 3
+      },
+      "summary": "检索命中 3 份资料",
+      "at": "2026-10-28T04:39:18.539597+00:00",
+      "model_metadata": {},
+      "next_action": "read_document"
+    },
+    {
+      "step": 2,
+      "action": "read_document",
+      "arguments": {
+        "doc_id": "D01",
+        "reason": "先读取报销指引，后续还需核验同主题FAQ"
+      },
+      "reason": "先读取报销指引，后续还需核验同主题FAQ",
+      "result": {
+        "ok": true,
+        "document": {
+          "id": "D01",
+          "title": "员工报销指引",
+          "version_date": "2026-01-01",
+          "policy_key": "expense.deadline",
+          "scope": "未注明",
+          "priority": null,
+          "keywords": [
+            "报销",
+            "报账",
+            "费用",
+            "期限",
+            "多久",
+            "几天"
+          ],
+          "text": "报销申请须在费用发生后 30 天内提交。"
+        }
+      },
+      "summary": "读取 D01 原文成功",
+      "at": "2026-10-28T04:39:33.063065+00:00",
+      "model_metadata": {},
+      "next_action": "read_document"
+    },
+    {
+      "step": 3,
+      "action": "read_document",
+      "arguments": {
+        "doc_id": "D02",
+        "reason": "D01给出30天，但同主题D02尚未读取，不能提前下结论"
+      },
+      "reason": "D01给出30天，但同主题D02尚未读取，不能提前下结论",
+      "result": {
+        "ok": false,
+        "error": {
+          "code": "TOOL_UNAVAILABLE",
+          "retryable": false,
+          "message": "合成故障注入：工具持续不可用"
+        }
+      },
+      "summary": "动作未成功；错误已反馈给模型",
+      "at": "2026-10-28T04:39:43.797300+00:00",
+      "model_metadata": {},
+      "next_action": "finish"
+    },
+    {
+      "step": 4,
+      "action": "finish",
+      "arguments": {
+        "status": "incomplete",
+        "citations": [
+          {
+            "doc_id": "D01",
+            "quote": "报销申请须在费用发生后 30 天内提交。"
+          }
+        ],
+        "gaps": [
+          "D02读取持续失败，同主题资料未核验完；D01仅为已取得的部分证据，暂不能确定适用期限。"
+        ],
+        "reason": "D02返回不可重试错误，停止并保留D01成功结果，不能宣称已完整回答"
+      },
+      "reason": "D02返回不可重试错误，停止并保留D01成功结果，不能宣称已完整回答",
+      "result": {
+        "ok": true,
+        "outcome": {
+          "status": "incomplete",
+          "answer": "任务未完成。\n[D01 · 2026-01-01] 报销申请须在费用发生后 30 天内提交。",
+          "citations": [
+            {
+              "doc_id": "D01",
+              "version_date": "2026-01-01",
+              "title": "员工报销指引",
+              "quote": "报销申请须在费用发生后 30 天内提交。",
+              "policy_key": "expense.deadline"
+            }
+          ],
+          "gaps": [
+            "D02读取持续失败，同主题资料未核验完；D01仅为已取得的部分证据，暂不能确定适用期限。"
+          ]
+        }
+      },
+      "summary": "结束：incomplete",
+      "at": "2026-10-28T04:39:55.777877+00:00",
+      "model_metadata": {},
+      "next_action": "stop"
+    }
+  ]
+}

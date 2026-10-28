@@ -1,0 +1,128 @@
+{
+  "schema_version": 1,
+  "provider": "stdio_bridge:codex-assistant-interactive",
+  "is_mock": false,
+  "input": {
+    "question": "视频可以自动配字吗？"
+  },
+  "started_at": "2026-10-28T04:38:49.580108+00:00",
+  "finished_at": "2026-10-28T04:39:43.587062+00:00",
+  "data_sha256": "38c4bfa1a2399c9ffb2420285230a40cb1f29d4fa9872fdfbf4363f107dba96e",
+  "max_steps": 12,
+  "steps": 3,
+  "outcome": {
+    "status": "answered",
+    "answer": "根据已核验原文：\n[P01 · 2026-08-01] 影创标准版支持自动生成字幕，生成后可手动编辑字幕文本。",
+    "citations": [
+      {
+        "doc_id": "P01",
+        "version_date": "2026-08-01",
+        "title": "影创产品字幕说明",
+        "quote": "影创标准版支持自动生成字幕，生成后可手动编辑字幕文本。",
+        "policy_key": "product.subtitle"
+      }
+    ],
+    "gaps": []
+  },
+  "trace": [
+    {
+      "step": 1,
+      "action": "search_documents",
+      "arguments": {
+        "query": "视频 自动配字",
+        "reason": "将用户的配字表述用于检索，查找对应的产品能力"
+      },
+      "reason": "将用户的配字表述用于检索，查找对应的产品能力",
+      "result": {
+        "ok": true,
+        "query": "视频 自动配字",
+        "normalized_query": "视频 自动字幕",
+        "results": [
+          {
+            "id": "P01",
+            "title": "影创产品字幕说明",
+            "version_date": "2026-08-01",
+            "policy_key": "product.subtitle",
+            "scope": "影创标准版",
+            "priority": null
+          }
+        ],
+        "coverage": "all_documents_in_matched_policy_keys",
+        "count": 1
+      },
+      "summary": "检索命中 1 份资料",
+      "at": "2026-10-28T04:39:16.331133+00:00",
+      "model_metadata": {},
+      "next_action": "read_document"
+    },
+    {
+      "step": 2,
+      "action": "read_document",
+      "arguments": {
+        "doc_id": "P01",
+        "reason": "配字被归一为字幕且命中P01，读取原文核验"
+      },
+      "reason": "配字被归一为字幕且命中P01，读取原文核验",
+      "result": {
+        "ok": true,
+        "document": {
+          "id": "P01",
+          "title": "影创产品字幕说明",
+          "version_date": "2026-08-01",
+          "policy_key": "product.subtitle",
+          "scope": "影创标准版",
+          "priority": null,
+          "keywords": [
+            "产品",
+            "影创",
+            "字幕",
+            "自动字幕",
+            "语音转文字"
+          ],
+          "text": "影创标准版支持自动生成字幕，生成后可手动编辑字幕文本。"
+        }
+      },
+      "summary": "读取 P01 原文成功",
+      "at": "2026-10-28T04:39:30.855405+00:00",
+      "model_metadata": {},
+      "next_action": "finish"
+    },
+    {
+      "step": 3,
+      "action": "finish",
+      "arguments": {
+        "status": "answered",
+        "citations": [
+          {
+            "doc_id": "P01",
+            "quote": "影创标准版支持自动生成字幕，生成后可手动编辑字幕文本。"
+          }
+        ],
+        "gaps": [],
+        "reason": "原文明确支持自动字幕，回答可保留产品版本限制及完整引用"
+      },
+      "reason": "原文明确支持自动字幕，回答可保留产品版本限制及完整引用",
+      "result": {
+        "ok": true,
+        "outcome": {
+          "status": "answered",
+          "answer": "根据已核验原文：\n[P01 · 2026-08-01] 影创标准版支持自动生成字幕，生成后可手动编辑字幕文本。",
+          "citations": [
+            {
+              "doc_id": "P01",
+              "version_date": "2026-08-01",
+              "title": "影创产品字幕说明",
+              "quote": "影创标准版支持自动生成字幕，生成后可手动编辑字幕文本。",
+              "policy_key": "product.subtitle"
+            }
+          ],
+          "gaps": []
+        }
+      },
+      "summary": "结束：answered",
+      "at": "2026-10-28T04:39:43.587062+00:00",
+      "model_metadata": {},
+      "next_action": "stop"
+    }
+  ]
+}

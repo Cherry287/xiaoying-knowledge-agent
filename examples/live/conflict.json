@@ -1,0 +1,240 @@
+{
+  "schema_version": 1,
+  "provider": "stdio_bridge:codex-assistant-interactive",
+  "is_mock": false,
+  "input": {
+    "question": "报销期限是多久？"
+  },
+  "started_at": "2026-10-28T04:35:08.938586+00:00",
+  "finished_at": "2026-10-28T04:36:07.715392+00:00",
+  "data_sha256": "38c4bfa1a2399c9ffb2420285230a40cb1f29d4fa9872fdfbf4363f107dba96e",
+  "max_steps": 12,
+  "steps": 5,
+  "outcome": {
+    "status": "conflict",
+    "answer": "资料存在冲突，无法确定唯一答案：\n[D01 · 2026-01-01] 报销申请须在费用发生后 30 天内提交。\n[D02 · 2026-06-01] 报销申请须在费用发生后 15 天内提交。",
+    "citations": [
+      {
+        "doc_id": "D01",
+        "version_date": "2026-01-01",
+        "title": "员工报销指引",
+        "quote": "报销申请须在费用发生后 30 天内提交。",
+        "policy_key": "expense.deadline"
+      },
+      {
+        "doc_id": "D02",
+        "version_date": "2026-06-01",
+        "title": "财务报销 FAQ",
+        "quote": "报销申请须在费用发生后 15 天内提交。",
+        "policy_key": "expense.deadline"
+      }
+    ],
+    "gaps": [
+      "请确认哪份制度适用于本次报销，或提供明确的制度优先级；现有资料未注明适用范围和优先级。"
+    ]
+  },
+  "trace": [
+    {
+      "step": 1,
+      "action": "search_documents",
+      "arguments": {
+        "query": "报销期限",
+        "reason": "先查询报销期限制度，确定可供核验的文档"
+      },
+      "reason": "先查询报销期限制度，确定可供核验的文档",
+      "result": {
+        "ok": true,
+        "query": "报销期限",
+        "normalized_query": "报销期限",
+        "results": [
+          {
+            "id": "D01",
+            "title": "员工报销指引",
+            "version_date": "2026-01-01",
+            "policy_key": "expense.deadline",
+            "scope": "未注明",
+            "priority": null
+          },
+          {
+            "id": "D02",
+            "title": "财务报销 FAQ",
+            "version_date": "2026-06-01",
+            "policy_key": "expense.deadline",
+            "scope": "未注明",
+            "priority": null
+          },
+          {
+            "id": "D03",
+            "title": "报销附件说明",
+            "version_date": "2026-02-01",
+            "policy_key": "expense.receipt",
+            "scope": "所有员工",
+            "priority": null
+          }
+        ],
+        "coverage": "all_documents_in_matched_policy_keys",
+        "count": 3
+      },
+      "summary": "检索命中 3 份资料",
+      "at": "2026-10-28T04:35:28.613858+00:00",
+      "model_metadata": {},
+      "next_action": "read_document"
+    },
+    {
+      "step": 2,
+      "action": "read_document",
+      "arguments": {
+        "doc_id": "D01",
+        "reason": "检索命中两份期限制度，先读取员工报销指引的原文"
+      },
+      "reason": "检索命中两份期限制度，先读取员工报销指引的原文",
+      "result": {
+        "ok": true,
+        "document": {
+          "id": "D01",
+          "title": "员工报销指引",
+          "version_date": "2026-01-01",
+          "policy_key": "expense.deadline",
+          "scope": "未注明",
+          "priority": null,
+          "keywords": [
+            "报销",
+            "报账",
+            "费用",
+            "期限",
+            "多久",
+            "几天"
+          ],
+          "text": "报销申请须在费用发生后 30 天内提交。"
+        }
+      },
+      "summary": "读取 D01 原文成功",
+      "at": "2026-10-28T04:35:39.785631+00:00",
+      "model_metadata": {},
+      "next_action": "read_document"
+    },
+    {
+      "step": 3,
+      "action": "read_document",
+      "arguments": {
+        "doc_id": "D02",
+        "reason": "D01规定30天，但还有同主题FAQ未读，需要核对是否一致"
+      },
+      "reason": "D01规定30天，但还有同主题FAQ未读，需要核对是否一致",
+      "result": {
+        "ok": true,
+        "document": {
+          "id": "D02",
+          "title": "财务报销 FAQ",
+          "version_date": "2026-06-01",
+          "policy_key": "expense.deadline",
+          "scope": "未注明",
+          "priority": null,
+          "keywords": [
+            "报销",
+            "报账",
+            "费用",
+            "期限",
+            "多久",
+            "几天"
+          ],
+          "text": "报销申请须在费用发生后 15 天内提交。"
+        }
+      },
+      "summary": "读取 D02 原文成功",
+      "at": "2026-10-28T04:35:50.894748+00:00",
+      "model_metadata": {},
+      "next_action": "search_documents"
+    },
+    {
+      "step": 4,
+      "action": "search_documents",
+      "arguments": {
+        "query": "expense.deadline 适用范围 优先级",
+        "reason": "两份原文分别要求30天和15天，补查是否有适用范围或优先级依据"
+      },
+      "reason": "两份原文分别要求30天和15天，补查是否有适用范围或优先级依据",
+      "result": {
+        "ok": true,
+        "query": "expense.deadline 适用范围 优先级",
+        "normalized_query": "expense.deadline 适用范围 优先级",
+        "results": [
+          {
+            "id": "D01",
+            "title": "员工报销指引",
+            "version_date": "2026-01-01",
+            "policy_key": "expense.deadline",
+            "scope": "未注明",
+            "priority": null
+          },
+          {
+            "id": "D02",
+            "title": "财务报销 FAQ",
+            "version_date": "2026-06-01",
+            "policy_key": "expense.deadline",
+            "scope": "未注明",
+            "priority": null
+          }
+        ],
+        "coverage": "all_documents_in_matched_policy_keys",
+        "count": 2
+      },
+      "summary": "检索命中 2 份资料",
+      "at": "2026-10-28T04:35:59.959914+00:00",
+      "model_metadata": {},
+      "next_action": "finish"
+    },
+    {
+      "step": 5,
+      "action": "finish",
+      "arguments": {
+        "status": "conflict",
+        "citations": [
+          {
+            "doc_id": "D01",
+            "quote": "报销申请须在费用发生后 30 天内提交。"
+          },
+          {
+            "doc_id": "D02",
+            "quote": "报销申请须在费用发生后 15 天内提交。"
+          }
+        ],
+        "gaps": [
+          "请确认哪份制度适用于本次报销，或提供明确的制度优先级；现有资料未注明适用范围和优先级。"
+        ],
+        "reason": "补查仍只有互相冲突的两份制度，不能仅凭版本日期选择15天或30天"
+      },
+      "reason": "补查仍只有互相冲突的两份制度，不能仅凭版本日期选择15天或30天",
+      "result": {
+        "ok": true,
+        "outcome": {
+          "status": "conflict",
+          "answer": "资料存在冲突，无法确定唯一答案：\n[D01 · 2026-01-01] 报销申请须在费用发生后 30 天内提交。\n[D02 · 2026-06-01] 报销申请须在费用发生后 15 天内提交。",
+          "citations": [
+            {
+              "doc_id": "D01",
+              "version_date": "2026-01-01",
+              "title": "员工报销指引",
+              "quote": "报销申请须在费用发生后 30 天内提交。",
+              "policy_key": "expense.deadline"
+            },
+            {
+              "doc_id": "D02",
+              "version_date": "2026-06-01",
+              "title": "财务报销 FAQ",
+              "quote": "报销申请须在费用发生后 15 天内提交。",
+              "policy_key": "expense.deadline"
+            }
+          ],
+          "gaps": [
+            "请确认哪份制度适用于本次报销，或提供明确的制度优先级；现有资料未注明适用范围和优先级。"
+          ]
+        }
+      },
+      "summary": "结束：conflict",
+      "at": "2026-10-28T04:36:07.714895+00:00",
+      "model_metadata": {},
+      "next_action": "stop"
+    }
+  ]
+}

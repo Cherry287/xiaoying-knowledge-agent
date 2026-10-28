@@ -1,0 +1,2 @@
+# Python 3.11+; runtime, CLI, evaluation and tests use only the standard library.
+# No pip packages are required. No Agent framework is used.

@@ -1,0 +1,5 @@
+{
+  "status": "incomplete",
+  "error": "CONFIG_OR_INPUT_ERROR",
+  "detail": "MISSING_CONFIG: set OPENAI_API_KEY and OPENAI_MODEL; no implicit Mock fallback"
+}

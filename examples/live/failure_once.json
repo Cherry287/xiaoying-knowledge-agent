@@ -1,0 +1,152 @@
+{
+  "schema_version": 1,
+  "provider": "stdio_bridge:codex-assistant-interactive",
+  "is_mock": false,
+  "input": {
+    "question": "自动字幕支持编辑吗？",
+    "failures": {
+      "read_document:P01": 1
+    }
+  },
+  "started_at": "2026-10-28T04:36:17.659211+00:00",
+  "finished_at": "2026-10-28T04:37:07.218406+00:00",
+  "data_sha256": "38c4bfa1a2399c9ffb2420285230a40cb1f29d4fa9872fdfbf4363f107dba96e",
+  "max_steps": 12,
+  "steps": 4,
+  "outcome": {
+    "status": "answered",
+    "answer": "根据已核验原文：\n[P01 · 2026-08-01] 影创标准版支持自动生成字幕，生成后可手动编辑字幕文本。",
+    "citations": [
+      {
+        "doc_id": "P01",
+        "version_date": "2026-08-01",
+        "title": "影创产品字幕说明",
+        "quote": "影创标准版支持自动生成字幕，生成后可手动编辑字幕文本。",
+        "policy_key": "product.subtitle"
+      }
+    ],
+    "gaps": []
+  },
+  "trace": [
+    {
+      "step": 1,
+      "action": "search_documents",
+      "arguments": {
+        "query": "自动字幕 编辑",
+        "reason": "先查找字幕编辑功能的依据"
+      },
+      "reason": "先查找字幕编辑功能的依据",
+      "result": {
+        "ok": true,
+        "query": "自动字幕 编辑",
+        "normalized_query": "自动字幕 编辑",
+        "results": [
+          {
+            "id": "P01",
+            "title": "影创产品字幕说明",
+            "version_date": "2026-08-01",
+            "policy_key": "product.subtitle",
+            "scope": "影创标准版",
+            "priority": null
+          }
+        ],
+        "coverage": "all_documents_in_matched_policy_keys",
+        "count": 1
+      },
+      "summary": "检索命中 1 份资料",
+      "at": "2026-10-28T04:36:35.541972+00:00",
+      "model_metadata": {},
+      "next_action": "read_document"
+    },
+    {
+      "step": 2,
+      "action": "read_document",
+      "arguments": {
+        "doc_id": "P01",
+        "reason": "检索结果仅有元数据，需要读取P01原文才能回答"
+      },
+      "reason": "检索结果仅有元数据，需要读取P01原文才能回答",
+      "result": {
+        "ok": false,
+        "error": {
+          "code": "TOOL_UNAVAILABLE",
+          "retryable": true,
+          "message": "合成故障注入：工具暂时不可用"
+        }
+      },
+      "summary": "动作未成功；错误已反馈给模型",
+      "at": "2026-10-28T04:36:45.571129+00:00",
+      "model_metadata": {},
+      "next_action": "read_document"
+    },
+    {
+      "step": 3,
+      "action": "read_document",
+      "arguments": {
+        "doc_id": "P01",
+        "reason": "读取返回可重试的临时故障，已有检索结果可保留，仅重试原文读取"
+      },
+      "reason": "读取返回可重试的临时故障，已有检索结果可保留，仅重试原文读取",
+      "result": {
+        "ok": true,
+        "document": {
+          "id": "P01",
+          "title": "影创产品字幕说明",
+          "version_date": "2026-08-01",
+          "policy_key": "product.subtitle",
+          "scope": "影创标准版",
+          "priority": null,
+          "keywords": [
+            "产品",
+            "影创",
+            "字幕",
+            "自动字幕",
+            "语音转文字"
+          ],
+          "text": "影创标准版支持自动生成字幕，生成后可手动编辑字幕文本。"
+        }
+      },
+      "summary": "读取 P01 原文成功",
+      "at": "2026-10-28T04:36:53.260331+00:00",
+      "model_metadata": {},
+      "next_action": "finish"
+    },
+    {
+      "step": 4,
+      "action": "finish",
+      "arguments": {
+        "status": "answered",
+        "citations": [
+          {
+            "doc_id": "P01",
+            "quote": "影创标准版支持自动生成字幕，生成后可手动编辑字幕文本。"
+          }
+        ],
+        "gaps": [],
+        "reason": "重试已取得P01原文，支持编辑的结论有引用依据；先前失败保留在Trace中"
+      },
+      "reason": "重试已取得P01原文，支持编辑的结论有引用依据；先前失败保留在Trace中",
+      "result": {
+        "ok": true,
+        "outcome": {
+          "status": "answered",
+          "answer": "根据已核验原文：\n[P01 · 2026-08-01] 影创标准版支持自动生成字幕，生成后可手动编辑字幕文本。",
+          "citations": [
+            {
+              "doc_id": "P01",
+              "version_date": "2026-08-01",
+              "title": "影创产品字幕说明",
+              "quote": "影创标准版支持自动生成字幕，生成后可手动编辑字幕文本。",
+              "policy_key": "product.subtitle"
+            }
+          ],
+          "gaps": []
+        }
+      },
+      "summary": "结束：answered",
+      "at": "2026-10-28T04:37:07.217907+00:00",
+      "model_metadata": {},
+      "next_action": "stop"
+    }
+  ]
+}

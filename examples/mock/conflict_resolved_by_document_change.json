@@ -1,0 +1,245 @@
+{
+  "schema_version": 1,
+  "provider": "offline_mock",
+  "is_mock": true,
+  "input": {
+    "question": "报销期限是多久？"
+  },
+  "started_at": "2026-10-28T04:46:06.884706+00:00",
+  "finished_at": "2026-10-28T04:46:06.884706+00:00",
+  "data_sha256": "0381583835af5f5878f8bd1853f0f2f71954b1793e7dbbd3c34b0b743b05193a",
+  "max_steps": 12,
+  "steps": 5,
+  "outcome": {
+    "status": "answered",
+    "answer": "根据已核验原文：\n[D01 · 2026-01-01] 报销申请须在费用发生后 30 天内提交。\n[D02 · 2026-06-01] 报销申请须在费用发生后 30 天内提交。\n[D03 · 2026-02-01] 提交报销申请时须附发票和支付凭证。",
+    "citations": [
+      {
+        "doc_id": "D01",
+        "version_date": "2026-01-01",
+        "title": "员工报销指引",
+        "quote": "报销申请须在费用发生后 30 天内提交。",
+        "policy_key": "expense.deadline"
+      },
+      {
+        "doc_id": "D02",
+        "version_date": "2026-06-01",
+        "title": "财务报销 FAQ",
+        "quote": "报销申请须在费用发生后 30 天内提交。",
+        "policy_key": "expense.deadline"
+      },
+      {
+        "doc_id": "D03",
+        "version_date": "2026-02-01",
+        "title": "报销附件说明",
+        "quote": "提交报销申请时须附发票和支付凭证。",
+        "policy_key": "expense.receipt"
+      }
+    ],
+    "gaps": []
+  },
+  "trace": [
+    {
+      "step": 1,
+      "action": "search_documents",
+      "arguments": {
+        "query": "报销期限是多久？",
+        "reason": "根据问题及必要的上文检索资料"
+      },
+      "reason": "根据问题及必要的上文检索资料",
+      "result": {
+        "ok": true,
+        "query": "报销期限是多久？",
+        "normalized_query": "报销期限是多久？",
+        "results": [
+          {
+            "id": "D01",
+            "title": "员工报销指引",
+            "version_date": "2026-01-01",
+            "policy_key": "expense.deadline",
+            "scope": "未注明",
+            "priority": null
+          },
+          {
+            "id": "D02",
+            "title": "财务报销 FAQ",
+            "version_date": "2026-06-01",
+            "policy_key": "expense.deadline",
+            "scope": "未注明",
+            "priority": null
+          },
+          {
+            "id": "D03",
+            "title": "报销附件说明",
+            "version_date": "2026-02-01",
+            "policy_key": "expense.receipt",
+            "scope": "所有员工",
+            "priority": null
+          }
+        ],
+        "coverage": "all_documents_in_matched_policy_keys",
+        "count": 3
+      },
+      "summary": "检索命中 3 份资料",
+      "at": "2026-10-28T04:46:06.884706+00:00",
+      "model_metadata": {},
+      "next_action": "read_document"
+    },
+    {
+      "step": 2,
+      "action": "read_document",
+      "arguments": {
+        "doc_id": "D01",
+        "reason": "检索只给出元数据，需要读取候选原文"
+      },
+      "reason": "检索只给出元数据，需要读取候选原文",
+      "result": {
+        "ok": true,
+        "document": {
+          "id": "D01",
+          "title": "员工报销指引",
+          "version_date": "2026-01-01",
+          "policy_key": "expense.deadline",
+          "scope": "未注明",
+          "priority": null,
+          "keywords": [
+            "报销",
+            "报账",
+            "费用",
+            "期限",
+            "多久",
+            "几天"
+          ],
+          "text": "报销申请须在费用发生后 30 天内提交。"
+        }
+      },
+      "summary": "读取 D01 原文成功",
+      "at": "2026-10-28T04:46:06.884706+00:00",
+      "model_metadata": {},
+      "next_action": "read_document"
+    },
+    {
+      "step": 3,
+      "action": "read_document",
+      "arguments": {
+        "doc_id": "D02",
+        "reason": "检索只给出元数据，需要读取候选原文"
+      },
+      "reason": "检索只给出元数据，需要读取候选原文",
+      "result": {
+        "ok": true,
+        "document": {
+          "id": "D02",
+          "title": "财务报销 FAQ",
+          "version_date": "2026-06-01",
+          "policy_key": "expense.deadline",
+          "scope": "未注明",
+          "priority": null,
+          "keywords": [
+            "报销",
+            "报账",
+            "费用",
+            "期限",
+            "多久",
+            "几天"
+          ],
+          "text": "报销申请须在费用发生后 30 天内提交。"
+        }
+      },
+      "summary": "读取 D02 原文成功",
+      "at": "2026-10-28T04:46:06.884706+00:00",
+      "model_metadata": {},
+      "next_action": "read_document"
+    },
+    {
+      "step": 4,
+      "action": "read_document",
+      "arguments": {
+        "doc_id": "D03",
+        "reason": "检索只给出元数据，需要读取候选原文"
+      },
+      "reason": "检索只给出元数据，需要读取候选原文",
+      "result": {
+        "ok": true,
+        "document": {
+          "id": "D03",
+          "title": "报销附件说明",
+          "version_date": "2026-02-01",
+          "policy_key": "expense.receipt",
+          "scope": "所有员工",
+          "priority": null,
+          "keywords": [
+            "报销",
+            "发票",
+            "凭证",
+            "附件"
+          ],
+          "text": "提交报销申请时须附发票和支付凭证。"
+        }
+      },
+      "summary": "读取 D03 原文成功",
+      "at": "2026-10-28T04:46:06.884706+00:00",
+      "model_metadata": {},
+      "next_action": "finish"
+    },
+    {
+      "step": 5,
+      "action": "finish",
+      "arguments": {
+        "status": "answered",
+        "citations": [
+          {
+            "doc_id": "D01",
+            "quote": "报销申请须在费用发生后 30 天内提交。"
+          },
+          {
+            "doc_id": "D02",
+            "quote": "报销申请须在费用发生后 30 天内提交。"
+          },
+          {
+            "doc_id": "D03",
+            "quote": "提交报销申请时须附发票和支付凭证。"
+          }
+        ],
+        "gaps": [],
+        "reason": "已读取候选原文，未发现同主题冲突"
+      },
+      "reason": "已读取候选原文，未发现同主题冲突",
+      "result": {
+        "ok": true,
+        "outcome": {
+          "status": "answered",
+          "answer": "根据已核验原文：\n[D01 · 2026-01-01] 报销申请须在费用发生后 30 天内提交。\n[D02 · 2026-06-01] 报销申请须在费用发生后 30 天内提交。\n[D03 · 2026-02-01] 提交报销申请时须附发票和支付凭证。",
+          "citations": [
+            {
+              "doc_id": "D01",
+              "version_date": "2026-01-01",
+              "title": "员工报销指引",
+              "quote": "报销申请须在费用发生后 30 天内提交。",
+              "policy_key": "expense.deadline"
+            },
+            {
+              "doc_id": "D02",
+              "version_date": "2026-06-01",
+              "title": "财务报销 FAQ",
+              "quote": "报销申请须在费用发生后 30 天内提交。",
+              "policy_key": "expense.deadline"
+            },
+            {
+              "doc_id": "D03",
+              "version_date": "2026-02-01",
+              "title": "报销附件说明",
+              "quote": "提交报销申请时须附发票和支付凭证。",
+              "policy_key": "expense.receipt"
+            }
+          ],
+          "gaps": []
+        }
+      },
+      "summary": "结束：answered",
+      "at": "2026-10-28T04:46:06.884706+00:00",
+      "model_metadata": {},
+      "next_action": "stop"
+    }
+  ]
+}

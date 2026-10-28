@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "provider": "stdio_bridge:codex-assistant-interactive",
+  "is_mock": false,
+  "input": {
+    "question": "公司提供宠物医疗保险吗？"
+  },
+  "started_at": "2026-10-28T04:37:08.317551+00:00",
+  "finished_at": "2026-10-28T04:38:00.668161+00:00",
+  "data_sha256": "38c4bfa1a2399c9ffb2420285230a40cb1f29d4fa9872fdfbf4363f107dba96e",
+  "max_steps": 12,
+  "steps": 3,
+  "outcome": {
+    "status": "insufficient_evidence",
+    "answer": "现有资料不足以回答。",
+    "citations": [],
+    "gaps": [
+      "当前知识库未检索到该项福利的制度，请提供员工福利文件或向负责该制度的人员确认。"
+    ]
+  },
+  "trace": [
+    {
+      "step": 1,
+      "action": "search_documents",
+      "arguments": {
+        "query": "宠物医疗保险",
+        "reason": "检索公司是否提供该项福利的制度依据"
+      },
+      "reason": "检索公司是否提供该项福利的制度依据",
+      "result": {
+        "ok": true,
+        "query": "宠物医疗保险",
+        "normalized_query": "宠物医疗保险",
+        "results": [],
+        "coverage": "all_documents_in_matched_policy_keys",
+        "count": 0
+      },
+      "summary": "检索命中 0 份资料",
+      "at": "2026-10-28T04:37:34.727246+00:00",
+      "model_metadata": {},
+      "next_action": "search_documents"
+    },
+    {
+      "step": 2,
+      "action": "search_documents",
+      "arguments": {
+        "query": "员工福利 宠物保障 保险",
+        "reason": "直接检索没有命中，改用员工福利和保障表述补查"
+      },
+      "reason": "直接检索没有命中，改用员工福利和保障表述补查",
+      "result": {
+        "ok": true,
+        "query": "员工福利 宠物保障 保险",
+        "normalized_query": "员工福利 宠物保障 保险",
+        "results": [],
+        "coverage": "all_documents_in_matched_policy_keys",
+        "count": 0
+      },
+      "summary": "检索命中 0 份资料",
+      "at": "2026-10-28T04:37:40.938976+00:00",
+      "model_metadata": {},
+      "next_action": "finish"
+    },
+    {
+      "step": 3,
+      "action": "finish",
+      "arguments": {
+        "status": "insufficient_evidence",
+        "citations": [],
+        "gaps": [
+          "当前知识库未检索到该项福利的制度，请提供员工福利文件或向负责该制度的人员确认。"
+        ],
+        "reason": "原始查询和改写查询均无结果，无法据此判断公司提供或不提供该保险"
+      },
+      "reason": "原始查询和改写查询均无结果，无法据此判断公司提供或不提供该保险",
+      "result": {
+        "ok": true,
+        "outcome": {
+          "status": "insufficient_evidence",
+          "answer": "现有资料不足以回答。",
+          "citations": [],
+          "gaps": [
+            "当前知识库未检索到该项福利的制度，请提供员工福利文件或向负责该制度的人员确认。"
+          ]
+        }
+      },
+      "summary": "结束：insufficient_evidence",
+      "at": "2026-10-28T04:38:00.667666+00:00",
+      "model_metadata": {},
+      "next_action": "stop"
+    }
+  ]
+}
